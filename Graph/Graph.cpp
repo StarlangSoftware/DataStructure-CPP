@@ -37,9 +37,9 @@ template<class T> void Graph<T>::addEdgeToEdgeList(map<Node<T>, vector<Edge<T>>>
 
 /**
  * The addToEdges method takes 2 {@link Node}s as inputs; fromNode and toNode and also the corresponding weight of the edge
- * between these two nodes. First, if given fromNode or toNode are not listed in nodes {@link HashSet}, it adds these nodes to
- * nodes {@link HashSet}. If they are listed, then it creates a new {@link Edge} between fromNode and toNode with given weight
- * and calls addEdgeToEdgeList method for adding newEdge to edges and fromEdges {@link HashSet}s.
+ * between these two nodes. First, if given fromNode or toNode are not listed in nodes {@link set}, it adds these nodes to
+ * nodes {@link set}. If they are listed, then it creates a new {@link Edge} between fromNode and toNode with given weight
+ * and calls addEdgeToEdgeList method for adding newEdge to edges and fromEdges {@link set}s.
  *
  * @param fromNode Node that starting an edge.
  * @param toNode   Node that ending an edge.
