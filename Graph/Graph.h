@@ -21,6 +21,9 @@ private:
     void addToEdges(Node<T> fromNode, Node<T> toNode, double weight);
 public:
     Graph(bool directed);
+    void addEdge(Node<T> fromNode, Node<T> toNode, double weight);
+    bool containsEdge(Node<T> fromNode, Node<T> toNode);
+    unsigned long numberOfNodes();
 };
 
 #endif //DATASTRUCTURE_GRAPH_H

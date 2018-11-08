@@ -57,3 +57,50 @@ template<class T> void Graph<T>::addToEdges(Node<T> fromNode, Node<T> toNode, do
     addEdgeToEdgeList(edges, fromNode, newEdge);
     addEdgeToEdgeList(fromEdges, toNode, newEdge);
 }
+
+/**
+ * The addEdge method takes 2 {@link Node}s as inputs; fromNode and toNode and also the corresponding weight of the edge
+ * between these two nodes. It calls addToEdges method to create an edge between fromNode and toNode and if the graph
+ * is not directed it also calls addToEdges method to create a back edge between these nodes.
+ *
+ * @param fromNode Node that starting an edge.
+ * @param toNode   Node that ending an edge.
+ * @param weight   between two nodes.
+ */
+template<class T> void Graph<T>::addEdge(Node<T> fromNode, Node<T> toNode, double weight) {
+    addToEdges(fromNode, toNode, weight);
+    if (!directed) {
+        addToEdges(toNode, fromNode, weight);
+    }
+}
+
+/**
+ * The containsEdge method takes two {@link Node}s as inputs; fromNode and toNode. If edges {@link map} contains
+ * fromNode it loops through the edges and if the label of current toNode equals to the given toNode's label then it returns true,
+ * false otherwise.
+ *
+ * @param fromNode {@link Node} used to search for keys.
+ * @param toNode   {@link Node} used to search for labels.
+ * @return true if the label of to Node equals to the toNode's label, false otherwise.
+ */
+template<class T> bool Graph<T>::containsEdge(Node<T> fromNode, Node<T> toNode) {
+    if (edges.contains(fromNode)) {
+        for (Edge<T> edge : edges.find(fromNode)->second) {
+            if (edge.to().getLabel() == toNode.getLabel()) {
+                return true;
+            }
+        }
+        return false;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * The numberOfNodes method returns the size of the nodes {@link set}.
+ *
+ * @return the size of the nodes {@link set}.
+ */
+template<class T> unsigned long Graph<T>::numberOfNodes() {
+    return nodes.size();
+}
