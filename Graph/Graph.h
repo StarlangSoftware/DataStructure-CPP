@@ -24,6 +24,8 @@ public:
     void addEdge(Node<T> fromNode, Node<T> toNode, double weight);
     bool containsEdge(Node<T> fromNode, Node<T> toNode);
     unsigned long numberOfNodes();
+    unsigned long numberOfEdges();
+    unordered_set<Node<T>> nodeList();
 };
 
 #endif //DATASTRUCTURE_GRAPH_H

@@ -104,3 +104,25 @@ template<class T> bool Graph<T>::containsEdge(Node<T> fromNode, Node<T> toNode) 
 template<class T> unsigned long Graph<T>::numberOfNodes() {
     return nodes.size();
 }
+
+/**
+ * The numberOfEdges method loops through edges {@link map} and accumulates the size of edges {@link set} of each node.
+ *
+ * @return sum of the total edges of nodes.
+ */
+template<class T> unsigned long Graph<T>::numberOfEdges() {
+    unsigned long sum = 0;
+    for (auto const& node : edges) {
+        sum += node.second.size();
+    }
+    return sum;
+}
+
+/**
+ * The nodeList method returns the nodes {@link Set}.
+ *
+ * @return the nodes {@link Set}.
+ */
+template<class T> unordered_set<Node<T>> Graph<T>::nodeList() {
+    return nodes;
+}
