@@ -33,7 +33,7 @@ template<class K> CounterHashMap<K>::CounterHashMap() {
 }
 
 template<class K> bool CounterHashMap<K>::containsKey(K key) {
-    return find(key) != this->end();
+    return this->find(key) != this->end();
 }
 
 /**
@@ -44,9 +44,9 @@ template<class K> bool CounterHashMap<K>::containsKey(K key) {
  */
 template<class K> void CounterHashMap<K>::put(K key) {
     if (containsKey(key)) {
-        emplace(key, find(key)->second + 1);
+        this->emplace(key, this->find(key)->second + 1);
     } else {
-        emplace(key, 1);
+        this->emplace(key, 1);
     }
 }
 
@@ -59,9 +59,9 @@ template<class K> void CounterHashMap<K>::put(K key) {
  */
 template<class K> void CounterHashMap<K>::putNTimes(K key, int N) {
     if (containsKey(key)) {
-        emplace(key, find(key)->second + N);
+        this->emplace(key, this->find(key)->second + N);
     } else {
-        emplace(key, N);
+        this->emplace(key, N);
     }
 }
 
@@ -74,7 +74,7 @@ template<class K> void CounterHashMap<K>::putNTimes(K key, int N) {
  */
 template<class K> int CounterHashMap<K>::count(K key) {
     if (containsKey(key)) {
-        return find(key)->second;
+        return this->find(key)->second;
     } else {
         return 0;
     }
@@ -87,7 +87,7 @@ template<class K> int CounterHashMap<K>::count(K key) {
  */
 template<class K> int CounterHashMap<K>::sumOfCounts() {
     int sum = 0;
-    for (auto item : this) {
+    for (auto item = this->begin(); item != this->end(); item++) {
         sum += item->second;
     }
     return sum;
@@ -103,7 +103,7 @@ template<class K> int CounterHashMap<K>::sumOfCounts() {
 template<class K> K CounterHashMap<K>::max() {
     int maxCount = 0;
     K maxKey = nullptr;
-    for (auto item : this) {
+    for (auto item = this->begin(); item != this->end(); item++) {
         int count = item->second;
         if (count > maxCount) {
             maxCount = count;
@@ -126,7 +126,7 @@ template<class K> K CounterHashMap<K>::max() {
 template<class K> K CounterHashMap<K>::max(double threshold) {
     int maxCount = 0, total = 0;
     K maxKey = nullptr;
-    for (auto item : this) {
+    for (auto item = this->begin(); item != this->end(); item++) {
         int count = item->second;
         total += count;
         if (count > maxCount) {
@@ -147,7 +147,7 @@ template<class K> K CounterHashMap<K>::max(double threshold) {
  * @param toBeAdded CounterHashMap to be added to this counterHashMap.
  */
 template<class K> void CounterHashMap<K>::add(CounterHashMap<K> toBeAdded) {
-    for (auto item : this){
+    for (auto item = this->begin(); item != this->end(); item++){
         putNTimes(this->first, toBeAdded.find(this->first)->second);
     }
 }
@@ -162,7 +162,7 @@ template<class K> void CounterHashMap<K>::add(CounterHashMap<K> toBeAdded) {
  */
 template<class K> vector<pair<K, int>> CounterHashMap<K>::topN(int N) {
     vector<pair<K, int>> result;
-    for (auto item : this) {
+    for (auto item = this->begin(); item != this->end(); item++) {
         result.push_back(item);
     }
     sort(result.begin(), result.end(),
@@ -180,7 +180,7 @@ template<class K> vector<pair<K, int>> CounterHashMap<K>::topN(int N) {
  */
 template<class K> string CounterHashMap<K>::to_string() {
     string result = "";
-    for (auto item : this) {
+    for (auto item = this->begin(); item != this->end(); item++) {
         result = result + item->first.to_string() + ":" + item->second.to_string() + "-";
     }
     return result;
