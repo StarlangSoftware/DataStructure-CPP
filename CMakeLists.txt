@@ -3,4 +3,4 @@ project(DataStructure)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_library(DataStructure CounterHashMap.cpp CounterHashMap.h Cache/CacheNode.cpp Cache/CacheNode.h Cache/CacheLinkedList.cpp Cache/CacheLinkedList.h Cache/LRUCache.cpp Cache/LRUCache.h Graph/Node.cpp Graph/Node.h Graph/Edge.cpp Graph/Edge.h Graph/Graph.cpp Graph/Graph.h Graph/SingleSourceShortestPath.cpp Graph/SingleSourceShortestPath.h Graph/AllPairsShortestPath.cpp Graph/AllPairsShortestPath.h)
+add_library(DataStructure CounterHashMap.h Cache/CacheNode.h Cache/CacheLinkedList.h Cache/LRUCache.h Graph/Node.h Graph/Edge.h Graph/Graph.h Graph/SingleSourceShortestPath.h Graph/AllPairsShortestPath.h)
