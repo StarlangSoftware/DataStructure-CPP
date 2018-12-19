@@ -30,7 +30,7 @@ public:
  */
 template<class T> AllPairsShortestPath<T>::AllPairsShortestPath(unordered_set<Node<T>> nodeList) {
     for (Node<T> node : nodeList) {
-        paths.emplace(node, SingleSourceShortestPath<T>(node));
+        paths.insert_or_assign(node, SingleSourceShortestPath<T>(node));
     }
 }
 
@@ -41,7 +41,7 @@ template<class T> AllPairsShortestPath<T>::AllPairsShortestPath(unordered_set<No
  * @param singleSourceShortestPath {@link SingleSourceShortestPath} type input to put paths {@link map}.
  */
 template<class T> void AllPairsShortestPath<T>::put(Node<T> fromNode, SingleSourceShortestPath<T> singleSourceShortestPath) {
-    paths.emplace(fromNode, singleSourceShortestPath);
+    paths.insert_or_assign(fromNode, singleSourceShortestPath);
 }
 
 /**

@@ -78,7 +78,7 @@ template<class K, class T> void LRUCache<K, T>::add(K key, T data) {
     }
     CacheNode<K, T>* cacheNode = new CacheNode<K, T>(key, data);
     cache.add(cacheNode);
-    map.emplace(key, cacheNode);
+    map.insert_or_assign(key, cacheNode);
 }
 
 #endif //DATASTRUCTURE_LRUCACHE_H

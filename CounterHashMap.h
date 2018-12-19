@@ -44,7 +44,7 @@ template<class K> bool CounterHashMap<K>::containsKey(K key) {
  */
 template<class K> void CounterHashMap<K>::put(K key) {
     if (containsKey(key)) {
-        this->emplace(key, this->find(key)->second + 1);
+        this->insert_or_assign(key, this->find(key)->second + 1);
     } else {
         this->emplace(key, 1);
     }
@@ -59,7 +59,7 @@ template<class K> void CounterHashMap<K>::put(K key) {
  */
 template<class K> void CounterHashMap<K>::putNTimes(K key, int N) {
     if (containsKey(key)) {
-        this->emplace(key, this->find(key)->second + N);
+        this->insert_or_assign(key, this->find(key)->second + N);
     } else {
         this->emplace(key, N);
     }

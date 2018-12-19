@@ -41,8 +41,8 @@ template<class T> SingleSourceShortestPath<T>::SingleSourceShortestPath(Node<T> 
  * @param newPrevious {@link Node} type input.
  */
 template<class T> void SingleSourceShortestPath<T>::update(Node<T> toNode, double newLength, Node<T> newPrevious) {
-    pathLength.emplace(toNode, newLength);
-    previous.emplace(toNode, newPrevious);
+    pathLength.insert_or_assign(toNode, newLength);
+    previous.insert_or_assign(toNode, newPrevious);
 }
 
 /**
