@@ -11,11 +11,12 @@ using namespace std;
 
 template<class K, class T> class LRUCache {
 private:
-    int cacheSize;
+    int cacheSize = 10000;
     map<K, CacheNode<K, T>*> map;
     CacheLinkedList<K, T> cache;
 public:
-    LRUCache(int cacheSize);
+    explicit LRUCache(int cacheSize);
+    LRUCache() = default;
     bool contains(K key);
     T get(K key);
     void add(K key, T data);
