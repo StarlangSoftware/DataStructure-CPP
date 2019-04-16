@@ -181,7 +181,7 @@ template<class K> vector<pair<K, int>> CounterHashMap<K>::topN(int N) {
  * @return String of the each entry's key and value.
  */
 template<class K> string CounterHashMap<K>::to_string() {
-    string result = "";
+    string result;
     for (auto item = this->begin(); item != this->end(); item++) {
         result = result + item->first.to_string() + ":" + item->second.to_string() + "-";
     }
@@ -191,9 +191,9 @@ template<class K> string CounterHashMap<K>::to_string() {
 template<class K>
 void CounterHashMap<K>::serialize(ostream &outputFile) {
     outputFile << this->size();
-    for (auto& item : this) {
-        outputFile << item.first.to_string() << "\n";
-        outputFile << item.second.to_string() << "\n";
+    for (auto item = this->begin(); item != this->end(); item++) {
+        outputFile << item->first << "\n";
+        outputFile << item->second << "\n";
     }
 }
 
