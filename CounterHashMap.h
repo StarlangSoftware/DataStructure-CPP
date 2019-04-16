@@ -5,6 +5,7 @@
 #ifndef DATASTRUCTURE_COUNTERHASHMAP_H
 #define DATASTRUCTURE_COUNTERHASHMAP_H
 
+#include <fstream>
 #include <map>
 #include <string>
 
@@ -12,6 +13,7 @@ using namespace std;
 
 template <class K> class CounterHashMap : public map<K, int> {
 public:
+    explicit CounterHashMap(ifstream& inputFile);
     CounterHashMap();
     void put(K key);
     void putNTimes(K key, int N);
@@ -23,6 +25,7 @@ public:
     void add(CounterHashMap<K> toBeAdded);
     vector<pair<K, int>> topN(int N);
     string to_string();
+    void serialize(ostream& outputFile);
 };
 
 /**
@@ -183,6 +186,28 @@ template<class K> string CounterHashMap<K>::to_string() {
         result = result + item->first.to_string() + ":" + item->second.to_string() + "-";
     }
     return result;
+}
+
+template<class K>
+void CounterHashMap<K>::serialize(ostream &outputFile) {
+    outputFile << this->size();
+    for (auto& item : this) {
+        outputFile << item.first.to_string() << "\n";
+        outputFile << item.second.to_string() << "\n";
+    }
+}
+
+template<class K>
+CounterHashMap<K>::CounterHashMap(ifstream &inputFile) {
+    int size;
+    inputFile >> size;
+    for (int i = 0; i < size; i++){
+        K item;
+        inputFile >> item;
+        int count;
+        inputFile >> count;
+        this->emplace(item, count);
+    }
 }
 
 #endif //DATASTRUCTURE_COUNTERHASHMAP_H
