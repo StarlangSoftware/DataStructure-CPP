@@ -28,7 +28,7 @@ Use Git for cloning the code to your local or below line for Ubuntu:
 
 A directory called DataStructure will be created. Or you can use below link for exploring the code:
 
-	git clone https://github.com/olcaytaner/DataStructure-CPP.git
+	git clone https://github.com/starlangsoftware/DataStructure-CPP.git
 
 ## Open project with CLion IDE
 
