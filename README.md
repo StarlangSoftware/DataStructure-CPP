@@ -1,6 +1,6 @@
 For Developers
 ============
-You can also see [Java](https://github.com/olcaytaner/DataStructure), [Python](https://github.com/olcaytaner/DataStructure-Py), or [C#](https://github.com/olcaytaner/DataStructure-CS) repository.
+You can also see [Java](https://github.com/starlangsoftware/DataStructure), [Python](https://github.com/starlangsoftware/DataStructure-Py), [Swift](https://github.com/starlangsoftware/DataStructure-Swift), or [C#](https://github.com/starlangsoftware/DataStructure-CS) repository.
 
 ## Requirements
 
