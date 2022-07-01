@@ -69,7 +69,7 @@ Bir CounterHashMap yaratmak için
 
 Hafızaya veri eklemek için
 
-	void put(K key)
+	void put(T key)
 
 Örneğin,
 
@@ -79,7 +79,7 @@ Bu aşamanın ardından "ali" nin sayacı 1 olur.
 
 Hafızaya o veriyi birden fazla kez eklemek için
 
-	void putNTimes(K key, int N)
+	void putNTimes(T key, int N)
 
 Örneğin,
 
@@ -89,7 +89,7 @@ Bu aşamanın ardından "ali"'nin sayacı 5 olur.
 
 Hafızada o verinin kaç kere geçtiğini bulmak için
 
-	int count(K key)
+	int count(T key)
 
 Örneğin, "veli" nin kaç kere geçtiğini bulmak için
 
@@ -99,7 +99,7 @@ Bu aşamanın ardından kacKere değişkeninin değeri 5 olur.
 
 Hafızada hangi verinin en çok geçtiğini bulmak için
 
-	K max()
+	T max()
 
 Örneğin,
 
@@ -118,18 +118,18 @@ kullanılır. cacheSize burada cachelenecek verinin büyüklüğünün limitini 
 
 Cache'e bir veri eklemek için
 
-	void add(K key, T data)
+	void add(T key, T data)
 
 kullanılır. data burada eklenecek veriyi, key anahtar göstergeyi göstermektedir.
 
 Cache'de bir veri var mı diye kontrol etmek için
 
-	boolean contains(K key)
+	boolean contains(T key)
 
 kullanılır.
 
 Cache'deki veriyi anahtarına göre getirmek için
 
-	T get(K key)
+	T get(T key)
 
 kullanılır.

@@ -34,10 +34,10 @@ template<class K, class T> LRUCache<K, T>::LRUCache(int cacheSize) {
 }
 
 /**
- * The contains method takes a K type input key and returns true if the {@link map} has the given key,
+ * The contains method takes a T type input key and returns true if the {@link map} has the given key,
  * false otherwise.
  *
- * @param key K type input key.
+ * @param key T type input key.
  * @return true if the {@link map} has the given key, false otherwise.
  */
 template<class K, class T> bool LRUCache<K, T>::contains(K key) {
@@ -45,12 +45,12 @@ template<class K, class T> bool LRUCache<K, T>::contains(K key) {
 }
 
 /**
- * The get method takes K type input key and returns the least recently used value. First it checks
+ * The get method takes T type input key and returns the least recently used value. First it checks
  * whether the {@link map} has the given key, if so it gets the corresponding cacheNode. It removes
  * that cacheNode from {@link LinkedList} and adds it again to the beginning of the list since it is
  * more likely to be used again. At the end, returns the data value of that cacheNode.
  *
- * @param key K type input key.
+ * @param key T type input key.
  * @return data value if the {@link map} has the given key, nullptr otherwise.
  */
 template<class K, class T> T LRUCache<K, T>::get(K key) {
@@ -68,7 +68,7 @@ template<class K, class T> T LRUCache<K, T>::get(K key) {
  * it has space for new entries, it creates new cacheNode with given inputs and adds this cacheNode to the
  * {@link LinkedList} and also puts it to the {@link map}.
  *
- * @param key  K type input.
+ * @param key  T type input.
  * @param data T type input.
  */
 template<class K, class T> void LRUCache<K, T>::add(K key, T data) {

@@ -49,7 +49,7 @@ TEST_CASE("LRUCache-test4") {
 }
 
 TEST_CASE("LRUCache-test5") {
-    int size = 1000000;
+    int size = 100000;
     LRUCache<int, int> cache = LRUCache<int, int>(size);
     for (int i = 0; i < size; i++){
         cache.add(i, i);
