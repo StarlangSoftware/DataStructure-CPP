@@ -4,7 +4,7 @@
 
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
-#include "../Cache/LRUCache.h"
+#include "../src/Cache/LRUCache.h"
 
 TEST_CASE("LRUCache-test1") {
     LRUCache<string, string> cache = LRUCache<string, string>(50);

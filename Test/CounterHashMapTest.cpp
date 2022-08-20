@@ -3,7 +3,7 @@
 //
 
 #include "catch.hpp"
-#include "../CounterHashMap.h"
+#include "../src/CounterHashMap.h"
 
 TEST_CASE("CounterHashMap-testPut1") {
     CounterHashMap<string> counterHashMap = CounterHashMap<string>();

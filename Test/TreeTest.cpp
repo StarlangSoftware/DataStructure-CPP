@@ -3,9 +3,9 @@
 //
 
 #include "catch.hpp"
-#include "../Tree/Tree.h"
-#include "../Tree/AvlTree.h"
-#include "../Tree/BTree.h"
+#include "../src/Tree/Tree.h"
+#include "../src/Tree/AvlTree.h"
+#include "../src/Tree/BTree.h"
 
 int isSmaller(int first, int second){
     return first - second;
