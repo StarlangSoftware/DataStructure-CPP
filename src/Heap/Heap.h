@@ -14,6 +14,7 @@ protected:
 private:
     HeapNode<T>* array;
     int count;
+    int N;
     void percolateDown(int no);
     void percolateUp(int no);
 public:
@@ -28,6 +29,7 @@ public:
 template<class T> Heap<T>::Heap(int N, Heap::ComparatorType comparator) {
     array = new HeapNode<T>[N];
     count = 0;
+    this->N = N;
     this->comparator = comparator;
 }
 
@@ -77,7 +79,9 @@ template<class T> T Heap<T>::deleteTop() {
 }
 
 template<class T> void Heap<T>::insert(T data) {
-    count++;
+    if (count < N){
+        count++;
+    }
     array[count - 1] = HeapNode<T>(data);
     percolateUp(count - 1);
 }
