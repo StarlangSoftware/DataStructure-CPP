@@ -10,12 +10,12 @@ template <class T> class HeapNode {
 private:
     T data;
 public:
-    explicit HeapNode(T data);
+    explicit HeapNode(const T& data);
     T getData();
     HeapNode();
 };
 
-template<class T> HeapNode<T>::HeapNode(T data) {
+template<class T> HeapNode<T>::HeapNode(const T& data) {
     this->data = data;
 }
 

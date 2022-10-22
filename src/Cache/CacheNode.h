@@ -12,13 +12,13 @@ private:
     CacheNode<K, T>* previous = nullptr;
     CacheNode<K, T>* next = nullptr;
 public:
-    CacheNode(K key, T data);
+    CacheNode(const K& key, const T& data);
     T getData();
     K getKey();
     CacheNode<K, T>* getPrevious();
     CacheNode<K, T>* getNext();
-    void setPrevious(CacheNode<K, T>* previous);
-    void setNext(CacheNode<K, T>* next);
+    void setPrevious(CacheNode<K, T>* _previous);
+    void setNext(CacheNode<K, T>* _next);
 };
 
 /**
@@ -28,7 +28,7 @@ public:
  * @param data T type input values represented by keys.
  */
 template<class K, class T>
-CacheNode<K, T>::CacheNode(K key, T data) {
+CacheNode<K, T>::CacheNode(const K& key, const T& data) {
     this->key = key;
     this->data = data;
 }
@@ -70,21 +70,21 @@ template<class K, class T> CacheNode<K, T> *CacheNode<K, T>::getNext() {
 }
 
 /**
- * Setter for the previous CacheNode.
+ * Setter for the _previous CacheNode.
  *
- * @param previous CacheNode.
+ * @param _previous CacheNode.
  */
-template<class K, class T> void CacheNode<K, T>::setPrevious(CacheNode<K, T> *previous) {
-    this->previous = previous;
+template<class K, class T> void CacheNode<K, T>::setPrevious(CacheNode<K, T> *_previous) {
+    this->previous = _previous;
 }
 
 /**
- * Setter for the next CacheNode.
+ * Setter for the _next CacheNode.
  *
- * @param next CacheNode.
+ * @param _next CacheNode.
  */
-template<class K, class T> void CacheNode<K, T>::setNext(CacheNode<K, T> *next) {
-    this->next = next;
+template<class K, class T> void CacheNode<K, T>::setNext(CacheNode<K, T> *_next) {
+    this->next = _next;
 }
 
 #endif //DATASTRUCTURE_CACHENODE_H

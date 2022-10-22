@@ -17,11 +17,11 @@ public:
     BTreeNode<T>** children;
     explicit BTreeNode(int d);
     BTreeNode(BTreeNode<T>* firstChild, BTreeNode<T>* secondChild, T newK, int d);
-    int position(T value, ComparatorType comparator);
-    BTreeNode<T>* insertNode(T value, ComparatorType comparator, bool isRoot);
-    BTreeNode<T>* insertLeaf(T value, ComparatorType comparator);
+    int position(const T& value, ComparatorType comparator);
+    BTreeNode<T>* insertNode(const T& value, ComparatorType comparator, bool isRoot);
+    BTreeNode<T>* insertLeaf(const T& value, ComparatorType comparator);
 private:
-    void insertIntoK(int index, T insertedK);
+    void insertIntoK(int index, const T& insertedK);
     void moveHalfOfTheKToNewNode(BTreeNode<T>* newNode);
     void moveHalfOfTheChildrenToNewNode(BTreeNode<T>* newNode);
     void moveHalfOfTheElementsToNewNode(BTreeNode<T>* newNode);
@@ -46,7 +46,7 @@ template<class T> BTreeNode<T>::BTreeNode(BTreeNode<T> *firstChild, BTreeNode<T>
     K[0] = newK;
 }
 
-template<class T> int BTreeNode<T>::position(T value, ComparatorType comparator) {
+template<class T> int BTreeNode<T>::position(const T& value, ComparatorType comparator) {
     if (m == 0){
         return 0;
     }
@@ -62,7 +62,7 @@ template<class T> int BTreeNode<T>::position(T value, ComparatorType comparator)
     return -1;
 }
 
-template<class T> void BTreeNode<T>::insertIntoK(int index, T insertedK) {
+template<class T> void BTreeNode<T>::insertIntoK(int index, const T& insertedK) {
     for (int i = m; i > index; i--){
         K[i] = K[i - 1];
     }
@@ -88,7 +88,7 @@ template<class T> void BTreeNode<T>::moveHalfOfTheElementsToNewNode(BTreeNode<T>
     moveHalfOfTheChildrenToNewNode(newNode);
 }
 
-template<class T> BTreeNode<T> *BTreeNode<T>::insertNode(T value, ComparatorType comparator, bool isRoot) {
+template<class T> BTreeNode<T> *BTreeNode<T>::insertNode(const T& value, ComparatorType comparator, bool isRoot) {
     BTreeNode<T>* s;
     BTreeNode<T>* newNode;
     int child;
@@ -121,7 +121,7 @@ template<class T> BTreeNode<T> *BTreeNode<T>::insertNode(T value, ComparatorType
     }
 }
 
-template<class T> BTreeNode<T> *BTreeNode<T>::insertLeaf(T value, ComparatorType comparator) {
+template<class T> BTreeNode<T> *BTreeNode<T>::insertLeaf(const T& value, ComparatorType comparator) {
     int child;
     BTreeNode<T>* newNode;
     child = position(value, comparator);

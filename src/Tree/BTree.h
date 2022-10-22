@@ -14,8 +14,8 @@ public:
     ComparatorType comparator;
     int d;
     BTree(int d, ComparatorType comparator);
-    BTreeNode<T>* search(T value);
-    void insert(T data);
+    BTreeNode<T>* search(const T& value);
+    void insert(const T& data);
 };
 
 template<class T> BTree<T>::BTree(int d, ComparatorType comparator) {
@@ -23,7 +23,7 @@ template<class T> BTree<T>::BTree(int d, ComparatorType comparator) {
     this->d = d;
 }
 
-template<class T> BTreeNode<T> *BTree<T>::search(T value) {
+template<class T> BTreeNode<T> *BTree<T>::search(const T& value) {
     int child;
     BTreeNode<T>* b;
     b = root;
@@ -41,7 +41,7 @@ template<class T> BTreeNode<T> *BTree<T>::search(T value) {
     return nullptr;
 }
 
-template<class T> void BTree<T>::insert(T data) {
+template<class T> void BTree<T>::insert(const T& data) {
     BTreeNode<T>* s;
     if (root == nullptr){
         root = new BTreeNode<T>(d);

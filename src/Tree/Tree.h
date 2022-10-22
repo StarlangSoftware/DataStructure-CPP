@@ -16,12 +16,13 @@ protected:
 public:
     explicit Tree(ComparatorType comparator);
     ~Tree();
-    TreeNode<T>* search(T value);
+    TreeNode<T>* search(const T& value);
     void insert(TreeNode<T>* node);
-    void insert(T data);
+
+    virtual void insert(const T& data);
 };
 
-template<class T> TreeNode<T> *Tree<T>::search(T value) {
+template<class T> TreeNode<T> *Tree<T>::search(const T& value) {
     TreeNode<T>* d = root;
     while (d != nullptr){
         if (comparator(d->data, value) == 0){
@@ -67,7 +68,7 @@ template<class T> void Tree<T>::insert(TreeNode<T> *node) {
     insertChild(y, node);
 }
 
-template<class T> void Tree<T>::insert(T data) {
+template<class T> void Tree<T>::insert(const T& data) {
     insert(new TreeNode<T>(data));
 }
 

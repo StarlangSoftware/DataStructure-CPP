@@ -10,11 +10,11 @@
 template <class T> class AvlTreeNode : public TreeNode<T>{
 public:
     int height;
-    explicit AvlTreeNode(T data);
+    explicit AvlTreeNode(const T& data);
 };
 
 template<class T>
-AvlTreeNode<T>::AvlTreeNode(T data):TreeNode<T>(data) {
+AvlTreeNode<T>::AvlTreeNode(const T& data):TreeNode<T>(data) {
     height = 1;
 }
 

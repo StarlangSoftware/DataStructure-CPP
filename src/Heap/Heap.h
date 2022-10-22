@@ -9,20 +9,20 @@
 
 template <class T> class Heap{
 protected:
-    typedef int(*ComparatorType)(T, T);
+    typedef int(*ComparatorType)(const T&, const T&);
     ComparatorType comparator;
 private:
     HeapNode<T>* array;
     int count;
-    int N;
+    int N{};
     void percolateDown(int no);
     void percolateUp(int no);
 public:
     explicit Heap(int N, ComparatorType comparator);
-    virtual int compare(T data1, T data2) = 0;
+    virtual int compare(const T& data1, const T& data2) = 0;
     bool isEmpty();
     void swapNode(int index1, int index2);
-    void insert(T data);
+    void insert(const T& data);
     T deleteTop();
 };
 
@@ -78,7 +78,7 @@ template<class T> T Heap<T>::deleteTop() {
     return tmp.getData();
 }
 
-template<class T> void Heap<T>::insert(T data) {
+template<class T> void Heap<T>::insert(const T& data) {
     if (count < N){
         count++;
     }

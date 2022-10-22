@@ -15,14 +15,14 @@ template <class K> class CounterHashMap : public map<K, int> {
 public:
     explicit CounterHashMap(ifstream& inputFile);
     CounterHashMap();
-    void put(K key);
-    void putNTimes(K key, int N);
-    bool containsKey(K key);
-    int count(K key);
+    void put(const K& key);
+    void putNTimes(const K& key, int N);
+    bool containsKey(const K& key);
+    int count(const K& key);
     int sumOfCounts();
     K max();
     K max(double threshold);
-    void add(CounterHashMap<K> toBeAdded);
+    void add(const CounterHashMap<K>& toBeAdded);
     vector<pair<K, int>> topN(int N);
     string to_string();
     void serialize(ostream& outputFile);
@@ -34,7 +34,7 @@ public:
 template<class K> CounterHashMap<K>::CounterHashMap() {
 }
 
-template<class K> bool CounterHashMap<K>::containsKey(K key) {
+template<class K> bool CounterHashMap<K>::containsKey(const K& key) {
     return this->find(key) != this->end();
 }
 
@@ -44,7 +44,7 @@ template<class K> bool CounterHashMap<K>::containsKey(K key) {
  *
  * @param key to put.
  */
-template<class K> void CounterHashMap<K>::put(K key) {
+template<class K> void CounterHashMap<K>::put(const K& key) {
     if (containsKey(key)) {
         this->insert_or_assign(key, this->find(key)->second + 1);
     } else {
@@ -59,7 +59,7 @@ template<class K> void CounterHashMap<K>::put(K key) {
  * @param key to put.
  * @param N   to increment value.
  */
-template<class K> void CounterHashMap<K>::putNTimes(K key, int N) {
+template<class K> void CounterHashMap<K>::putNTimes(const K& key, int N) {
     if (containsKey(key)) {
         this->insert_or_assign(key, this->find(key)->second + N);
     } else {
@@ -74,7 +74,7 @@ template<class K> void CounterHashMap<K>::putNTimes(K key, int N) {
  * @param key to get value.
  * @return the value corresponding given key, 0 if it is not mapped.
  */
-template<class K> int CounterHashMap<K>::count(K key) {
+template<class K> int CounterHashMap<K>::count(const K& key) {
     if (containsKey(key)) {
         return this->find(key)->second;
     } else {
@@ -148,7 +148,7 @@ template<class K> K CounterHashMap<K>::max(double threshold) {
  *
  * @param toBeAdded CounterHashMap to be added to this counterHashMap.
  */
-template<class K> void CounterHashMap<K>::add(CounterHashMap<K> toBeAdded) {
+template<class K> void CounterHashMap<K>::add(const CounterHashMap<K>& toBeAdded) {
     for (auto item = toBeAdded.begin(); item != toBeAdded.end(); item++){
         putNTimes(item->first, toBeAdded.find(item->first)->second);
     }

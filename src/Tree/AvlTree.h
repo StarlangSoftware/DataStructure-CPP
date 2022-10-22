@@ -14,10 +14,10 @@ public:
     typedef int(*ComparatorType)(T, T);
     explicit AvlTree(ComparatorType comparator);
     int height(AvlTreeNode<T>* d);
-    void insert(T item);
+    void insert(const T& item);
 private:
     AvlTreeNode<T>* rotateLeft(AvlTreeNode<T>* k2);
-    AvlTreeNode<T>* rotateRight(AvlTreeNode<T>* k2);
+    AvlTreeNode<T>* rotateRight(AvlTreeNode<T>* k1);
     AvlTreeNode<T>* doubleRotateLeft(AvlTreeNode<T>* k3);
     AvlTreeNode<T>* doubleRotateRight(AvlTreeNode<T>* k1);
     void insert(AvlTreeNode<T>* node);
@@ -106,7 +106,7 @@ template<class T> void AvlTree<T>::insert(AvlTreeNode<T> *node) {
     }
 }
 
-template<class T> void AvlTree<T>::insert(T item) {
+template<class T> void AvlTree<T>::insert(const T& item) {
     insert(new AvlTreeNode<T>(item));
 }
 

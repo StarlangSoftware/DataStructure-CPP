@@ -10,15 +10,15 @@
 template <class T> class MaxHeap : public Heap<T>{
 public:
     using Heap<T>::comparator;
-    typedef int(*ComparatorType)(T, T);
+    typedef int(*ComparatorType)(const T&, const T&);
     explicit MaxHeap(int N, ComparatorType comparator);
-    int compare(T data1, T data2);
+    int compare(const T& data1, const T& data2);
 };
 
 template<class T> MaxHeap<T>::MaxHeap(int N, MaxHeap::ComparatorType comparator): Heap<T>(N, comparator) {
 }
 
-template<class T> int MaxHeap<T>::compare(T data1, T data2) {
+template<class T> int MaxHeap<T>::compare(const T& data1, const T& data2) {
     return comparator(data1, data2);
 }
 

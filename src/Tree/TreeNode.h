@@ -10,11 +10,11 @@ public:
     T data;
     TreeNode<T>* left = nullptr;
     TreeNode<T>* right = nullptr;
-    explicit TreeNode(T data);
+    explicit TreeNode(const T& data);
     ~TreeNode();
 };
 
-template<class T> TreeNode<T>::TreeNode(T data) {
+template<class T> TreeNode<T>::TreeNode(const T& data) {
     this->data = data;
 }
 

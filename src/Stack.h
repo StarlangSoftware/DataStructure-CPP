@@ -14,14 +14,14 @@ private:
     vector<K> list;
 public:
     Stack();
-    void push(K item);
+    void push(const K& item);
     K pop();
     bool isEmpty();
 };
 
 template<class K> Stack<K>::Stack() = default;
 
-template<class K> void Stack<K>::push(K item) {
+template<class K> void Stack<K>::push(const K& item) {
     list.push_back(item);
 }
 
