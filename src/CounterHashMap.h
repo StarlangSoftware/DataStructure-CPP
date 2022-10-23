@@ -17,24 +17,23 @@ public:
     CounterHashMap();
     void put(const K& key);
     void putNTimes(const K& key, int N);
-    bool containsKey(const K& key);
-    int count(const K& key);
-    int sumOfCounts();
-    K max();
-    K max(double threshold);
+    bool containsKey(const K& key) const;
+    int count(const K& key) const;
+    int sumOfCounts() const;
+    K max() const;
+    K max(double threshold) const;
     void add(const CounterHashMap<K>& toBeAdded);
-    vector<pair<K, int>> topN(int N);
-    string to_string();
+    vector<pair<K, int>> topN(int N) const;
+    string to_string() const;
     void serialize(ostream& outputFile);
 };
 
 /**
  * A constructor which calls its super.
  */
-template<class K> CounterHashMap<K>::CounterHashMap() {
-}
+template<class K> CounterHashMap<K>::CounterHashMap() = default;
 
-template<class K> bool CounterHashMap<K>::containsKey(const K& key) {
+template<class K> bool CounterHashMap<K>::containsKey(const K& key) const{
     return this->find(key) != this->end();
 }
 
@@ -74,7 +73,7 @@ template<class K> void CounterHashMap<K>::putNTimes(const K& key, int N) {
  * @param key to get value.
  * @return the value corresponding given key, 0 if it is not mapped.
  */
-template<class K> int CounterHashMap<K>::count(const K& key) {
+template<class K> int CounterHashMap<K>::count(const K& key) const{
     if (containsKey(key)) {
         return this->find(key)->second;
     } else {
@@ -87,7 +86,7 @@ template<class K> int CounterHashMap<K>::count(const K& key) {
  *
  * @return accumulated counts.
  */
-template<class K> int CounterHashMap<K>::sumOfCounts() {
+template<class K> int CounterHashMap<K>::sumOfCounts() const{
     int sum = 0;
     for (auto item = this->begin(); item != this->end(); item++) {
         sum += item->second;
@@ -102,7 +101,7 @@ template<class K> int CounterHashMap<K>::sumOfCounts() {
  *
  * @return T type maxKey which is the maximum valued key.
  */
-template<class K> K CounterHashMap<K>::max() {
+template<class K> K CounterHashMap<K>::max() const{
     int maxCount = 0;
     K maxKey;
     for (auto item = this->begin(); item != this->end(); item++) {
@@ -125,7 +124,7 @@ template<class K> K CounterHashMap<K>::max() {
  * @param threshold double value.
  * @return T type maxKey if greater than the given threshold, null otherwise.
  */
-template<class K> K CounterHashMap<K>::max(double threshold) {
+template<class K> K CounterHashMap<K>::max(double threshold) const{
     int maxCount = 0, total = 0;
     K maxKey;
     for (auto item = this->begin(); item != this->end(); item++) {
@@ -162,7 +161,7 @@ template<class K> void CounterHashMap<K>::add(const CounterHashMap<K>& toBeAdded
  * @param N Integer value for defining size of the sublist.
  * @return a sublist of N element.
  */
-template<class K> vector<pair<K, int>> CounterHashMap<K>::topN(int N) {
+template<class K> vector<pair<K, int>> CounterHashMap<K>::topN(int N) const{
     vector<pair<K, int>> result;
     for (auto item = this->begin(); item != this->end(); item++) {
         result.emplace_back(*item);
@@ -180,7 +179,7 @@ template<class K> vector<pair<K, int>> CounterHashMap<K>::topN(int N) {
  *
  * @return String of the each entry's key and value.
  */
-template<class K> string CounterHashMap<K>::to_string() {
+template<class K> string CounterHashMap<K>::to_string() const{
     string result;
     for (auto item = this->begin(); item != this->end(); item++) {
         result = result + item->first.to_string() + ":" + item->second.to_string() + "-";

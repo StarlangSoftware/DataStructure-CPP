@@ -17,7 +17,7 @@ public:
     BTreeNode<T>** children;
     explicit BTreeNode(int d);
     BTreeNode(BTreeNode<T>* firstChild, BTreeNode<T>* secondChild, T newK, int d);
-    int position(const T& value, ComparatorType comparator);
+    int position(const T& value, ComparatorType comparator) const;
     BTreeNode<T>* insertNode(const T& value, ComparatorType comparator, bool isRoot);
     BTreeNode<T>* insertLeaf(const T& value, ComparatorType comparator);
 private:
@@ -46,7 +46,7 @@ template<class T> BTreeNode<T>::BTreeNode(BTreeNode<T> *firstChild, BTreeNode<T>
     K[0] = newK;
 }
 
-template<class T> int BTreeNode<T>::position(const T& value, ComparatorType comparator) {
+template<class T> int BTreeNode<T>::position(const T& value, ComparatorType comparator) const{
     if (m == 0){
         return 0;
     }

@@ -11,7 +11,7 @@ private:
     T data;
 public:
     explicit HeapNode(const T& data);
-    T getData();
+    T getData() const;
     HeapNode();
 };
 
@@ -19,7 +19,7 @@ template<class T> HeapNode<T>::HeapNode(const T& data) {
     this->data = data;
 }
 
-template<class T> T HeapNode<T>::getData() {
+template<class T> T HeapNode<T>::getData() const{
     return data;
 }
 

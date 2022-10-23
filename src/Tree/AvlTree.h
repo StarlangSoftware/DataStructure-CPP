@@ -13,7 +13,7 @@ template <class T> class AvlTree : public Tree<T>{
 public:
     typedef int(*ComparatorType)(T, T);
     explicit AvlTree(ComparatorType comparator);
-    int height(AvlTreeNode<T>* d);
+    int height(AvlTreeNode<T>* d) const;
     void insert(const T& item);
 private:
     AvlTreeNode<T>* rotateLeft(AvlTreeNode<T>* k2);
@@ -26,7 +26,7 @@ private:
 template<class T> AvlTree<T>::AvlTree(AvlTree::ComparatorType comparator):Tree<T>(comparator) {
 }
 
-template<class T> int AvlTree<T>::height(AvlTreeNode<T> *d) {
+template<class T> int AvlTree<T>::height(AvlTreeNode<T> *d) const{
     if (d == nullptr){
         return 0;
     } else {

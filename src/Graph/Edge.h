@@ -14,10 +14,10 @@ private:
     Node<T> to;
     double weight;
 public:
-    Edge(Node<T> from, Node<T> to, double weight);
-    Node<T> getTo();
-    Node<T> getFrom();
-    double getWeight();
+    Edge(const Node<T>& from, const Node<T>& to, double weight);
+    Node<T> getTo() const;
+    Node<T> getFrom() const;
+    double getWeight() const;
 };
 
 /**
@@ -27,7 +27,7 @@ public:
  * @param to     ending node of the edge.
  * @param weight of the edge.
  */
-template<class T> Edge<T>::Edge(Node<T> from, Node<T> to, double weight) {
+template<class T> Edge<T>::Edge(const Node<T>& from, const Node<T>& to, double weight) {
     this->from = from;
     this->to = to;
     this->weight = weight;
@@ -38,7 +38,7 @@ template<class T> Edge<T>::Edge(Node<T> from, Node<T> to, double weight) {
  *
  * @return to {@link Node}.
  */
-template<class T> Node<T> Edge<T>::getTo() {
+template<class T> Node<T> Edge<T>::getTo() const{
     return to;
 }
 
@@ -47,7 +47,7 @@ template<class T> Node<T> Edge<T>::getTo() {
  *
  * @return from {@link Node}.
  */
-template<class T> Node<T> Edge<T>::getFrom() {
+template<class T> Node<T> Edge<T>::getFrom() const{
     return from;
 }
 
@@ -56,7 +56,7 @@ template<class T> Node<T> Edge<T>::getFrom() {
  *
  * @return weight value.
  */
-template<class T> double Edge<T>::getWeight() {
+template<class T> double Edge<T>::getWeight() const{
     return weight;
 }
 

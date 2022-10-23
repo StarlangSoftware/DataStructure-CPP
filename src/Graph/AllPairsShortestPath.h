@@ -14,7 +14,7 @@ template <class T> class AllPairsShortestPath {
 private:
     map<Node<T>, SingleSourceShortestPath<T>> paths;
 public:
-    AllPairsShortestPath(unordered_set<Node<T>> nodeList);
+    AllPairsShortestPath(const unordered_set<Node<T>>& nodeList);
     void put(Node<T> fromNode, SingleSourceShortestPath<T> singleSourceShortestPath);
     void update(Node<T> fromNode, Node<T> toNode, double newLength, Node<T> newPrevious);
     double getLength(Node<T> fromNode, Node<T> toNode);
@@ -28,7 +28,7 @@ public:
  *
  * @param nodeList {@link unordered_set} type nodeList.
  */
-template<class T> AllPairsShortestPath<T>::AllPairsShortestPath(unordered_set<Node<T>> nodeList) {
+template<class T> AllPairsShortestPath<T>::AllPairsShortestPath(const unordered_set<Node<T>>& nodeList) {
     for (Node<T> node : nodeList) {
         paths.insert_or_assign(node, SingleSourceShortestPath<T>(node));
     }

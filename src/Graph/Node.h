@@ -12,9 +12,9 @@ template <class T> class Node {
 private:
     T label;
 public:
-    Node(T Label);
-    T getLabel();
-    string to_string();
+    Node(const T& Label);
+    T getLabel() const;
+    string to_string() const;
 };
 
 /**
@@ -23,7 +23,7 @@ public:
  *
  * @param Label T type input.
  */
-template<class T> Node<T>::Node(T Label) {
+template<class T> Node<T>::Node(const T& Label) {
     this->label = label;
 }
 
@@ -32,7 +32,7 @@ template<class T> Node<T>::Node(T Label) {
  *
  * @return label.
  */
-template<class T> T Node<T>::getLabel() {
+template<class T> T Node<T>::getLabel() const{
     return label;
 }
 
@@ -41,7 +41,7 @@ template<class T> T Node<T>::getLabel() {
  *
  * @return label string.
  */
-template<class T> string Node<T>::to_string() {
+template<class T> string Node<T>::to_string() const{
     return label.to_string();
 }
 

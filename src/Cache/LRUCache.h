@@ -17,9 +17,9 @@ private:
 public:
     explicit LRUCache(int cacheSize);
     LRUCache() = default;
-    bool contains(const K& key);
+    bool contains(const K& key) const;
     T get(const K& key);
-    int getCacheSize();
+    int getCacheSize() const;
     void add(const K& key, const T& data);
 };
 
@@ -40,7 +40,7 @@ template<class K, class T> LRUCache<K, T>::LRUCache(int cacheSize) {
  * @param key T type input key.
  * @return true if the {@link map} has the given key, false otherwise.
  */
-template<class K, class T> bool LRUCache<K, T>::contains(const K& key) {
+template<class K, class T> bool LRUCache<K, T>::contains(const K& key) const{
     return _map.find(key) != _map.end();
 }
 
@@ -53,7 +53,7 @@ template<class K, class T> bool LRUCache<K, T>::contains(const K& key) {
  * @param key T type input key.
  * @return data value if the {@link map} has the given key, nullptr otherwise.
  */
-template<class K, class T> T LRUCache<K, T>::get(const K& key) {
+template<class K, class T> T LRUCache<K, T>::get(const K& key){
     if (_map.find(key) != _map.end()) {
         CacheNode<K, T>* cacheNode = _map.find(key)->second;
         cache.remove(cacheNode);
@@ -82,7 +82,7 @@ template<class K, class T> void LRUCache<K, T>::add(const K& key, const T& data)
 }
 
 template<class K, class T>
-int LRUCache<K, T>::getCacheSize() {
+int LRUCache<K, T>::getCacheSize() const{
     return cacheSize;
 }
 

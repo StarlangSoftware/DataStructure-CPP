@@ -16,7 +16,7 @@ public:
     Stack();
     void push(const K& item);
     K pop();
-    bool isEmpty();
+    bool isEmpty() const;
 };
 
 template<class K> Stack<K>::Stack() = default;
@@ -35,7 +35,7 @@ template<class K> K Stack<K>::pop() {
     }
 }
 
-template<class K> bool Stack<K>::isEmpty() {
+template<class K> bool Stack<K>::isEmpty() const{
     return list.empty();
 }
 

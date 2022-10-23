@@ -20,7 +20,7 @@ private:
 public:
     explicit Heap(int N, ComparatorType comparator);
     virtual int compare(const T& data1, const T& data2) = 0;
-    bool isEmpty();
+    bool isEmpty() const;
     void swapNode(int index1, int index2);
     void insert(const T& data);
     T deleteTop();
@@ -33,7 +33,7 @@ template<class T> Heap<T>::Heap(int N, Heap::ComparatorType comparator) {
     this->comparator = comparator;
 }
 
-template<class T> bool Heap<T>::isEmpty() {
+template<class T> bool Heap<T>::isEmpty() const{
     return count == 0;
 }
 

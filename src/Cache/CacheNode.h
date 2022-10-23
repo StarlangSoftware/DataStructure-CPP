@@ -13,10 +13,10 @@ private:
     CacheNode<K, T>* next = nullptr;
 public:
     CacheNode(const K& key, const T& data);
-    T getData();
-    K getKey();
-    CacheNode<K, T>* getPrevious();
-    CacheNode<K, T>* getNext();
+    T getData() const;
+    K getKey() const;
+    CacheNode<K, T>* getPrevious() const;
+    CacheNode<K, T>* getNext() const;
     void setPrevious(CacheNode<K, T>* _previous);
     void setNext(CacheNode<K, T>* _next);
 };
@@ -38,7 +38,7 @@ CacheNode<K, T>::CacheNode(const K& key, const T& data) {
  *
  * @return data value.
  */
-template<class K, class T> T CacheNode<K, T>::getData() {
+template<class K, class T> T CacheNode<K, T>::getData() const{
     return data;
 }
 
@@ -47,7 +47,7 @@ template<class K, class T> T CacheNode<K, T>::getData() {
  *
  * @return key value.
  */
-template<class K, class T> K CacheNode<K, T>::getKey() {
+template<class K, class T> K CacheNode<K, T>::getKey() const{
     return key;
 }
 
@@ -56,7 +56,7 @@ template<class K, class T> K CacheNode<K, T>::getKey() {
  *
  * @return previous CacheNode.
  */
-template<class K, class T> CacheNode<K, T> *CacheNode<K, T>::getPrevious() {
+template<class K, class T> CacheNode<K, T> *CacheNode<K, T>::getPrevious() const{
     return previous;
 }
 
@@ -65,7 +65,7 @@ template<class K, class T> CacheNode<K, T> *CacheNode<K, T>::getPrevious() {
  *
  * @return next CacheNode.
  */
-template<class K, class T> CacheNode<K, T> *CacheNode<K, T>::getNext() {
+template<class K, class T> CacheNode<K, T> *CacheNode<K, T>::getNext() const{
     return next;
 }
 
