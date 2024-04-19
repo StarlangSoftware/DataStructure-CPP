@@ -15,10 +15,18 @@ public:
     HeapNode();
 };
 
+/**
+ * Constructor of HeapNode.
+ * @param data Data to be stored in the heap node.
+ */
 template<class T> HeapNode<T>::HeapNode(const T& data) {
     this->data = data;
 }
 
+/**
+ * Mutator of the data field
+ * @return Data
+ */
 template<class T> T HeapNode<T>::getData() const{
     return data;
 }
