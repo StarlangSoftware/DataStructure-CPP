@@ -14,6 +14,7 @@ public:
     ComparatorType comparator;
     int d;
     BTree(int d, ComparatorType comparator);
+    ~BTree();
     BTreeNode<T>* search(const T& value);
     void insert(const T& data);
 };
@@ -21,6 +22,11 @@ public:
 template<class T> BTree<T>::BTree(int d, ComparatorType comparator) {
     this->comparator = comparator;
     this->d = d;
+}
+
+template<class T>
+BTree<T>::~BTree() {
+    delete root;
 }
 
 template<class T> BTreeNode<T> *BTree<T>::search(const T& value) {

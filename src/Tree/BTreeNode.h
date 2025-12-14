@@ -5,8 +5,6 @@
 #ifndef DATASTRUCTURE_BTREENODE_H
 #define DATASTRUCTURE_BTREENODE_H
 
-#include "BTree.h"
-
 template <class T> class BTreeNode{
 public:
     typedef int(*ComparatorType)(T, T);
@@ -17,6 +15,7 @@ public:
     BTreeNode<T>** children;
     explicit BTreeNode(int d);
     BTreeNode(BTreeNode<T>* firstChild, BTreeNode<T>* secondChild, T newK, int d);
+    ~BTreeNode();
     int position(const T& value, ComparatorType comparator) const;
     BTreeNode<T>* insertNode(const T& value, ComparatorType comparator, bool isRoot);
     BTreeNode<T>* insertLeaf(const T& value, ComparatorType comparator);
@@ -44,6 +43,14 @@ template<class T> BTreeNode<T>::BTreeNode(BTreeNode<T> *firstChild, BTreeNode<T>
     children[0] = firstChild;
     children[1] = secondChild;
     K[0] = newK;
+}
+
+template<class T>
+BTreeNode<T>::~BTreeNode() {
+    delete K;
+    for (int i = 0; i < 2 * d + 1; i++) {
+        delete children[i];
+    }
 }
 
 template<class T> int BTreeNode<T>::position(const T& value, ComparatorType comparator) const{
@@ -83,7 +90,7 @@ template<class T> void BTreeNode<T>::moveHalfOfTheChildrenToNewNode(BTreeNode<T>
     }
 }
 
-template<class T> void BTreeNode<T>::moveHalfOfTheElementsToNewNode(BTreeNode<T> *newNode) {
+template<class T> void BTreeNode<T>::moveHalfOfTheElementsToNewNode(BTreeNode *newNode) {
     moveHalfOfTheKToNewNode(newNode);
     moveHalfOfTheChildrenToNewNode(newNode);
 }
