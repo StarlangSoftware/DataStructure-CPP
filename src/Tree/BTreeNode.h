@@ -47,10 +47,11 @@ template<class T> BTreeNode<T>::BTreeNode(BTreeNode<T> *firstChild, BTreeNode<T>
 
 template<class T>
 BTreeNode<T>::~BTreeNode() {
-    delete K;
+    delete[] K;
     for (int i = 0; i < 2 * d + 1; i++) {
         delete children[i];
     }
+    delete[] children;
 }
 
 template<class T> int BTreeNode<T>::position(const T& value, ComparatorType comparator) const{
