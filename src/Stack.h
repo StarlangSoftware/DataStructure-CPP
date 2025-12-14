@@ -23,7 +23,7 @@ public:
     Stack();
     void push(const K& item);
     K pop();
-    bool isEmpty() const;
+    [[nodiscard]] bool isEmpty() const;
 };
 
 template<class K> Stack<K>::Stack() = default;

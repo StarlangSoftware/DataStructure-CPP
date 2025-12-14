@@ -20,12 +20,12 @@ public:
     void putNTimes(const K& key, int N);
     bool containsKey(const K& key) const;
     int count(const K& key) const;
-    int sumOfCounts() const;
+    [[nodiscard]] int sumOfCounts() const;
     K max() const;
     K max(double threshold) const;
     void add(const CounterHashMap<K>& toBeAdded);
     vector<pair<K, int>> topN(int N) const;
-    string to_string() const;
+    [[nodiscard]] string to_string() const;
     void serialize(ostream& outputFile);
 };
 

@@ -31,7 +31,7 @@ private:
 public:
     explicit Heap(int N, ComparatorType comparator);
     virtual int compare(const T& data1, const T& data2) = 0;
-    bool isEmpty() const;
+    [[nodiscard]] bool isEmpty() const;
     void swapNode(int index1, int index2);
     void insert(const T& data);
     T deleteTop();

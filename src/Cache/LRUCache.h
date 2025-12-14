@@ -19,7 +19,7 @@ public:
     LRUCache() = default;
     bool contains(const K& key) const;
     T get(const K& key);
-    int getCacheSize() const;
+    [[nodiscard]] int getCacheSize() const;
     void add(const K& key, const T& data);
 };
 
